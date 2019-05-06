@@ -19,9 +19,9 @@ class MainForm extends Component {
     }
 
     nextStep = () => {
-        const { step } = this.state
+        const {step, id} = this.state
         this.setState({
-            step : step + 1
+            step : step + 1,
         })
     }
 
@@ -36,11 +36,15 @@ class MainForm extends Component {
         this.setState({ [input] : event.target.value })
     }
 
+    handleIdChange = (id) => {
+      this.setState({id});
+    }
+
     
     render(){
         const {step} = this.state;
-        const { firstName, lastName, email, streetAddress, city, state, zip} = this.state;
-        const values = { firstName, lastName, email, streetAddress, city, state, zip};
+        const { firstName, lastName, email, streetAddress, city, state, zip, id} = this.state;
+        const values = { firstName, lastName, email, streetAddress, city, state, zip, id};
         switch (step) {
           case 1:
             return (
@@ -73,6 +77,7 @@ class MainForm extends Component {
               <Confirmation
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
+                handleIdChange={this.handleIdChange}
                 values={values}
               />
             );
