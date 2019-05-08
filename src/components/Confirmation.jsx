@@ -10,7 +10,7 @@ class Confirmation extends Component{
 
   saveAndContinue = (e) => {
 
-      const url = process.env.RISK_BASEURL ? `${process.env.RISK_BASEURL}/api/v1/users` : "http://localhost:3001/api/v1/users";
+      const url = process.env.RISK_BASEURL || "https://risk-assessment-tool-api.herokuapp.com/api/v1/users";
       e.preventDefault();
       console.log(this.props.values);
       axios.post(url, 
@@ -22,8 +22,10 @@ class Confirmation extends Component{
         city: this.props.values.city,
         state: this.props.values.state,
         zip: this.props.values.zip
-      })
-        .then(async response =>{
+      },
+      {
+        headers: {'Content-Type': 'application/json'}
+      }).then(async response =>{
           console.log(response);
           const id = await response.data._id;
           await this.setState({id});
@@ -33,7 +35,6 @@ class Confirmation extends Component{
         .catch(error =>{
           console.log(error);
         });
-      
     }
 
     back  = (e) => {

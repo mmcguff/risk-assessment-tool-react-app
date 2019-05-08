@@ -16,7 +16,7 @@ class Success extends Component {
   };
 
   async componentDidMount(){
-    const url = process.env.RISK_BASEURL ? `${process.env.RISK_BASEURL}/api/v1/users` : "http://localhost:3001/api/v1/users";
+    const url = process.env.RISK_BASEURL || "https://risk-assessment-tool-api.herokuapp.com/api/v1/users";
     const response = await fetch(`${url}/${this.props.values.id}`);
     const data = await response.json();
     this.setState({ result: data, loading: false});
