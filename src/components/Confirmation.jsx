@@ -10,7 +10,7 @@ class Confirmation extends Component{
 
   saveAndContinue = (e) => {
 
-      const url = process.env.RISK_BASEURL || "https://risk-assessment-tool-api.herokuapp.com/api/v1/users";
+      const url = process.env.RISK_BASEURL || "http://localhost:3001/api/v1/users";
       e.preventDefault();
       console.log(this.props.values);
       axios.post(url, 
