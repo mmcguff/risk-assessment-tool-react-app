@@ -1,11 +1,39 @@
 import React, { Component } from 'react';
 import little from '../assets/svg/chickenLittle.svg';
 import {Container, Header, Button, List, Icon } from 'semantic-ui-react';
+import axios from 'axios';
+
+
 
 class Confirmation extends Component{
-    saveAndContinue = (e) => {
-        e.preventDefault();
-        this.props.nextStep();
+
+
+  saveAndContinue = (e) => {
+
+      const url = process.env.RISK_BASEURL ? `${process.env.RISK_BASEURL}/api/v1/users` : "http://localhost:3001/api/v1/users";
+      e.preventDefault();
+      console.log(this.props.values);
+      axios.post(url, 
+      {
+        firstName: this.props.values.firstName,
+        lastName: this.props.values.lastName,
+        email: this.props.values.email,
+        streetAddress: this.props.values.streetAddress,
+        city: this.props.values.city,
+        state: this.props.values.state,
+        zip: this.props.values.zip
+      })
+        .then(async response =>{
+          console.log(response);
+          const id = await response.data._id;
+          await this.setState({id});
+          await this.props.handleIdChange(id);
+          await this.props.nextStep();
+        })
+        .catch(error =>{
+          console.log(error);
+        });
+      
     }
 
     back  = (e) => {
@@ -14,8 +42,7 @@ class Confirmation extends Component{
     }
 
     render(){
-       const {values: { firstName, lastName, email, streetAddress, city, state, zip }} = this.props;
-
+      const {values: { firstName, lastName, email, streetAddress, city, state, zip}} = this.props;
         return(
             <Container textAlign="center">
         <Header textAlign="center">
