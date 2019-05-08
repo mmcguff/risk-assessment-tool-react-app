@@ -9,9 +9,11 @@ class Confirmation extends Component{
 
 
   saveAndContinue = (e) => {
+
+      const url = process.env.RISK_BASEURL ? `${process.env.RISK_BASEURL}/api/v1/users` : "http://localhost:3001/api/v1/users";
       e.preventDefault();
       console.log(this.props.values);
-      axios.post('http://localhost:3001/api/v1/users', 
+      axios.post(url, 
       {
         firstName: this.props.values.firstName,
         lastName: this.props.values.lastName,

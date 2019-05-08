@@ -16,7 +16,7 @@ class Success extends Component {
   };
 
   async componentDidMount(){
-    const url = "http://localhost:3001/api/v1/users";
+    const url = process.env.RISK_BASEURL ? `${process.env.RISK_BASEURL}/api/v1/users` : "http://localhost:3001/api/v1/users";
     const response = await fetch(`${url}/${this.props.values.id}`);
     const data = await response.json();
     this.setState({ result: data, loading: false});
@@ -24,7 +24,7 @@ class Success extends Component {
 
   render() {  
     const {
-      values: { firstName, lastName}
+      values: { firstName, lastName, city, state}
     } = this.props;  
     return (
       <div>
@@ -33,9 +33,9 @@ class Success extends Component {
         ): (
           <div>
                     <h1 className="title has-text-centered">
-          {firstName} {lastName}
+          <b>{firstName} {lastName}</b>
           <img src={little} height="64" width="64" alt="heat-wave" /> Here is
-          your completed Risk Assessment:
+          your completed Risk Assessment based upon where you live in <b>{city}, {state}</b>:
         </h1>
 
         <section className="hero is-medium is-primary">
