@@ -19,7 +19,7 @@ class MainForm extends Component {
     }
 
     nextStep = () => {
-        const {step, id} = this.state
+        const {step} = this.state
         this.setState({
             step : step + 1,
         })

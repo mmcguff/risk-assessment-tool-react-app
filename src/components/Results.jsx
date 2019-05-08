@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
-import heatWave from '../assets/svg/024-sun.svg';
-import houseFire from '../assets/svg/005-fire.svg';
-import wildFire from '../assets/svg/004-forest-fire.svg';
-import drought from '../assets/svg/010-drought.svg';
+import little from '../assets/svg/chickenLittle.svg';
+import fire from '../assets/svg/005-fire.svg';
 import flood from '../assets/svg/007-flood.svg';
+import drought from '../assets/svg/010-drought.svg';
 import hurricane from '../assets/svg/011-wind.svg';
 import tornado from '../assets/svg/003-tornado.svg';
-import winterStorm from '../assets/svg/020-snow.svg';
 import earthquake from '../assets/svg/001-earthquake.svg';
-import little from '../assets/svg/chickenLittle.svg';
+import snow from '../assets/svg/020-snow.svg';
 
 class Success extends Component {
 
@@ -44,80 +42,64 @@ class Success extends Component {
           <nav className="level is-warning">
             <div className="level-item has-text-centered">
               <div>
-                <p className="heading">House Fire</p>
-                <img src={houseFire} height="65" width="68" alt="heat-wave" />
-                <p className="title">{this.state.result.risk.houseFire}%</p>
-                <progress className="progress is-info" value={this.state.result.risk.houseFire} max="100" />
-              </div>
-            </div>
-            <div className="level-item has-text-centered">
-              <div>
-                <p className="heading">Wild Fire</p>
-                <img src={wildFire} height="65" width="68" alt="heat-wave" />
-                <p className="title">{this.state.result.risk.wildFire}%</p>
-                <progress className="progress is-warning" value={this.state.result.risk.wildFire} max="100" />
-              </div>
-            </div>
-            <div className="level-item has-text-centered">
-              <div>
-                <p className="heading">Heat Wave</p>
-                <img src={heatWave} height="65" width="68" alt="heat-wave" />
-                <p className="title">{this.state.result.risk.heatWave}%</p>
-                <progress className="progress is-warning" value={this.state.result.risk.heatWave} max="100" />
-              </div>
-            </div>
-            <div className="level-item has-text-centered">
-              <div>
-                <p className="heading">Drought</p>
-                <img src={drought} height="65" width="68" alt="heat-wave" />
-                <p className="title">{this.state.result.risk.drought}%</p>
-                <progress className="progress is-info" value={this.state.result.risk.drought} max="100" />
+                <p className="heading">Fire</p>
+                <img src={fire} height="65" width="68" alt="heat-wave" />
+                <p className="title">{this.state.result.fire}%</p>
+                <progress className="progress is-danger" value={this.state.result.fire} max="100" />
               </div>
             </div>
             <div className="level-item has-text-centered">
               <div>
                 <p className="heading">Flood</p>
                 <img src={flood} height="65" width="68" alt="heat-wave" />
-                <p className="title">{this.state.result.risk.flood}%</p>
-                <progress className="progress is-danger" value={this.state.result.risk.flood} max="100" />
+                <p className="title">{this.state.result.flood}%</p>
+                <progress className="progress is-danger" value={this.state.result.flood} max="100" />
               </div>
             </div>
             <div className="level-item has-text-centered">
               <div>
+                <p className="heading">Drought</p>
+                <img src={drought} height="65" width="68" alt="heat-wave" />
+                <p className="title">{this.state.result.drought}%</p>
+                <progress className="progress is-danger" value={this.state.result.drought} max="100" />
+              </div>
+            </div> 
+            <div className="level-item has-text-centered">
+              <div>
                 <p className="heading">Hurricane</p>
                 <img src={hurricane} height="65" width="68" alt="heat-wave" />
-                <p className="title">{this.state.result.risk.hurricane}%</p>
-                <progress className="progress is-danger" value={this.state.result.risk.hurricane} max="100" />
+                <p className="title">{this.state.result.hurricane}%</p>
+                <progress className="progress is-danger" value={this.state.result.hurricane} max="100" />
               </div>
             </div>
             <div className="level-item has-text-centered">
               <div>
                 <p className="heading">Tornado</p>
                 <img src={tornado} height="65" width="68" alt="heat-wave" />
-                <p className="title">{this.state.result.risk.tornado}%</p>
-                <progress className="progress is-warning" value={this.state.result.risk.tornado} max="100" />
-              </div>
-            </div>
-            <div className="level-item has-text-centered">
-              <div>
-                <p className="heading">Winter Storm</p>
-                <img src={winterStorm} height="65" width="68" alt="heat-wave" />
-                <p className="title">{this.state.result.risk.winterStorm}%</p>
-                <progress className="progress is-info" value={this.state.result.risk.winterStorm} max="100" />
+                <p className="title">{this.state.result.tornado}%</p>
+                <progress className="progress is-danger" value={this.state.result.tornado} max="100" />
               </div>
             </div>
             <div className="level-item has-text-centered">
               <div>
                 <p className="heading">Earthquake</p>
                 <img src={earthquake} height="65" width="68" alt="heat-wave" />
-                <p className="title">{this.state.result.risk.earthQuake}%</p>
-                <progress className="progress is-info" value={this.state.result.risk.earthQuake} max="100" />
+                <p className="title">{this.state.result.earthquake}%</p>
+                <progress className="progress is-danger" value={this.state.result.earthquake} max="100" />
+              </div>
+            </div>
+            <div className="level-item has-text-centered">
+              <div>
+                <p className="heading">Winter Storm</p>
+                <img src={snow} height="65" width="68" alt="heat-wave" />
+                <p className="title">{this.state.result.snow}%</p>
+                <progress className="progress is-danger" value={this.state.result.snow} max="100" />
               </div>
             </div>
           </nav>
         </section>
 
-        <section className="hero is-medium is-primary">
+        {/* <section className="hero is-medium is-primary">
           <div className="hero-body">
             <div className="container">
               <img src={flood} height="124" width="124" alt="heat-wave" />
@@ -138,7 +120,7 @@ class Success extends Component {
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         <footer className="footer">
           <div className="content has-text-centered">
