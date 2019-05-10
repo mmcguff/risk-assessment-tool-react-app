@@ -16,7 +16,7 @@ class Success extends Component {
   };
 
   async componentDidMount(){
-    const url = 'https://risk-assessment-tool-api.herokuapp.com';
+    const url = 'https://risk-assessment-tool-api.herokuapp.com/users/';
     const response = await fetch(`${url}/${this.props.values.id}`);
     const data = await response.json();
     this.setState({ result: data, loading: false});
