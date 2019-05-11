@@ -10,7 +10,7 @@ class Confirmation extends Component{
 
   saveAndContinue = (e) => {
 
-      const url = 'https://risk-assessment-tool-api.herokuapp.com/api/v1/users';
+      const url = 'https://risk-assessment-tool-api.herokuapp.com/api/v1/users'; //TODO RISK_BASEURL -don't forget /users this time
       e.preventDefault();
       console.log(this.props.values);
       axios.post(url, 
