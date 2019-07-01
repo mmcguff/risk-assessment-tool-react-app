@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import little from '../assets/svg/chickenLittle.svg';
-import { Header, Container, Form, Icon, Button } from 'semantic-ui-react';
+import { Header, Container, Form, Button } from 'semantic-ui-react';
 
 class Name extends Component {
   saveAndContinue = e => {
@@ -12,34 +11,31 @@ class Name extends Component {
     const { values } = this.props;
     return (
       <Container textAlign="center">
-        <Form color="green">
+        <Form>
           <Header textAlign="center">
-            Hi! I'm Little. I'll be preparing your Risk Assessment today.
+            Hey!  Welcome to the Safeable emergency planner.  Ready to go?
           </Header>
-          <img src={little} height="124" width="124" alt="heat-wave" />
-          <Header textAlign="center">What's your name?</Header>
-
-          <Form.Field>
+          <Form.Group widths="equal"  unstackable>
+          <Form.Field width="7">
             <input
               placeholder="First Name"
               onChange={this.props.handleChange('firstName')}
               defaultValue={values.firstName}
             />
           </Form.Field>
-          <Form.Field>
+          <Form.Field width="7">
             <input
               placeholder="Last Name"
               onChange={this.props.handleChange('lastName')}
               defaultValue={values.lastName}
             />
           </Form.Field>
-          <Button animated onClick={this.saveAndContinue}>
-            <Button.Content visible>Continue</Button.Content>
-            <Button.Content hidden>
-              <Icon name="arrow right" />
-            </Button.Content>
-          </Button>
+          </Form.Group>
         </Form>
+        <div class="container is-fluid">
+          <Button onClick={this.saveAndContinue} primary>Let's Do This</Button>
+        </div>
+       
       </Container>
     );
   }
