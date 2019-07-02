@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Name from './Name';
 import Email from './Email';
+import Household from './Household';
 import Address from './Address';
 import Confirmation from './Confirmation';
 import Results from './Results';
@@ -36,6 +37,10 @@ class MainForm extends Component {
         this.setState({ [input] : event.target.value })
     }
 
+    handleDropdownChange = event => {
+      this.setState({value: event.target.value});
+    }
+
     handleIdChange = (id) => {
       this.setState({id});
     }
@@ -56,21 +61,22 @@ class MainForm extends Component {
             );
           case 2:
             return (
-              <Email
-                nextStep={this.nextStep}
-                prevStep={this.prevStep}
-                handleChange={this.handleChange}
-                values={values}
-              />
+              <Address
+              nextStep={this.nextStep}
+              prevStep={this.prevStep}
+              handleChange={this.handleChange}
+              handleDropdownChange={this.handleDropdownChange}
+              values={values}
+            />
             );
             case 3:
             return (
-              <Address
-                nextStep={this.nextStep}
-                prevStep={this.prevStep}
-                handleChange={this.handleChange}
-                values={values}
-              />
+              <Household
+              nextStep={this.nextStep}
+              prevStep={this.prevStep}
+              handleChange={this.handleChange}
+              values={values}
+            />
             );
           case 4:
             return (
