@@ -10,7 +10,7 @@ class Name extends Component {
   render() {
     const { values } = this.props;
     return (
-      <Container textAlign="center">
+      <Container textAlign="center" text>
         <Form>
           <Header textAlign="center">
             Hey!  Welcome to the Safeable emergency planner.  Ready to go?
@@ -33,7 +33,7 @@ class Name extends Component {
           </Form.Group>
         </Form>
         <div class="container is-fluid">
-          <Button onClick={this.saveAndContinue} primary>Let's Do This</Button>
+          <Button onClick={this.saveAndContinue} color="blue">LET'S DO THIS</Button>
         </div>
        
       </Container>
