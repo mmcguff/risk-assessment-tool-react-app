@@ -32,7 +32,7 @@ class Name extends Component {
           </Form.Field>
           </Form.Group>
         </Form>
-        <div class="container is-fluid">
+        <div className="container is-fluid">
           <Button onClick={this.saveAndContinue} primary>LET'S DO THIS</Button>
         </div>
        
