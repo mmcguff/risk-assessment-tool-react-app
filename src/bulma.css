@@ -2773,6 +2773,7 @@ fieldset[disabled] .button {
 .container {
   margin: 0 auto;
   position: relative;
+  padding: 10px;
 }
 
 @media screen and (min-width: 1088px) {

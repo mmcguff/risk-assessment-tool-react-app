@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Name from './Name';
-import Email from './Email';
+import Household from './Household';
 import Address from './Address';
 import Confirmation from './Confirmation';
 import Results from './Results';
@@ -15,7 +15,8 @@ class MainForm extends Component {
         city: '',
         state: '',
         zip: '',
-        id: ''
+        id: '',
+        household: 4
     }
 
     nextStep = () => {
@@ -33,18 +34,21 @@ class MainForm extends Component {
     }
 
     handleChange = input => event => {
-        this.setState({ [input] : event.target.value })
+      this.setState({ [input] : event.target.value })
+    }
+
+    handleDropdownChange = input => event => {
+      this.setState({[input] : event.target})
     }
 
     handleIdChange = (id) => {
       this.setState({id});
     }
 
-    
     render(){
         const {step} = this.state;
-        const { firstName, lastName, email, streetAddress, city, state, zip, id} = this.state;
-        const values = { firstName, lastName, email, streetAddress, city, state, zip, id};
+        const { firstName, lastName, email, streetAddress, city, state, zip, id, household} = this.state;
+        const values = { firstName, lastName, email, streetAddress, city, state, zip, id, household};
         switch (step) {
           case 1:
             return (
@@ -56,21 +60,22 @@ class MainForm extends Component {
             );
           case 2:
             return (
-              <Email
-                nextStep={this.nextStep}
-                prevStep={this.prevStep}
-                handleChange={this.handleChange}
-                values={values}
-              />
+              <Address
+              nextStep={this.nextStep}
+              prevStep={this.prevStep}
+              handleChange={this.handleChange}
+              handleDropdownChange={this.handleDropdownChange}
+              values={values}
+            />
             );
             case 3:
             return (
-              <Address
-                nextStep={this.nextStep}
-                prevStep={this.prevStep}
-                handleChange={this.handleChange}
-                values={values}
-              />
+              <Household
+              nextStep={this.nextStep}
+              prevStep={this.prevStep}
+              handleChange={this.handleChange}
+              values={values}
+            />
             );
           case 4:
             return (
