@@ -7,6 +7,8 @@ import hurricane from '../assets/svg/011-wind.svg';
 import tornado from '../assets/svg/003-tornado.svg';
 import earthquake from '../assets/svg/001-earthquake.svg';
 import snow from '../assets/svg/020-snow.svg';
+const LOCAL_API_ENDPOINT = 'http://localhost:3001/api/v1';
+const PROD_API_ENDPOING = 'https://risk-assessment-tool-api.herokuapp.com/api/v1';
 
 class Success extends Component {
 
@@ -16,7 +18,7 @@ class Success extends Component {
   };
 
   async componentDidMount(){
-    const url = 'https://risk-assessment-tool-api.herokuapp.com/api/v1/users'; //TODO RISK_BASEURL -don't forget /users this time
+    const url = process.env.NODE_ENV === 'development'? `${LOCAL_API_ENDPOINT}/users` : `${PROD_API_ENDPOING}/users`;
     const response = await fetch(`${url}/${this.props.values.id}`);
     const data = await response.json();
     this.setState({ result: data, loading: false});

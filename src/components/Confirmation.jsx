@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
 import {Container, Header, Button, List, Icon } from 'semantic-ui-react';
 import axios from 'axios';
-
-
+const LOCAL_API_ENDPOINT = 'http://localhost:3001/api/v1';
+const PROD_API_ENDPOING = 'https://risk-assessment-tool-api.herokuapp.com/api/v1';
 
 class Confirmation extends Component{
-
+  
 
   saveAndContinue = (e) => {
-
-      const url = 'https://risk-assessment-tool-api.herokuapp.com/api/v1/users'; //TODO RISK_BASEURL -don't forget /users this time
+      const url = process.env.NODE_ENV === 'development'? `${LOCAL_API_ENDPOINT}/users` : `${PROD_API_ENDPOING}/users`;
       e.preventDefault();
       console.log(this.props.values);
       axios.post(url, 
       {
         firstName: this.props.values.firstName,
         lastName: this.props.values.lastName,
-        email: this.props.values.email,
+        //email: this.props.values.email,
         streetAddress: this.props.values.streetAddress,
         city: this.props.values.city,
         state: this.props.values.state,
