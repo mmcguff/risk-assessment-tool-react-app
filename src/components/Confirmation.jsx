@@ -8,7 +8,7 @@ class Confirmation extends Component{
   
 
   saveAndContinue = (e) => {
-      const url = process.env.NODE_ENV === 'development'? `${LOCAL_API_ENDPOINT}/users` : `${PROD_API_ENDPOING}/users`;
+    const url = `${PROD_API_ENDPOING}/users`;
       e.preventDefault();
       console.log(this.props.values);
       axios.post(url, 

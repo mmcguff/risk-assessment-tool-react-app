@@ -18,7 +18,7 @@ class Success extends Component {
   };
 
   async componentDidMount(){
-    const url = process.env.NODE_ENV === 'development'? `${LOCAL_API_ENDPOINT}/users` : `${PROD_API_ENDPOING}/users`;
+    const url = `${PROD_API_ENDPOING}/users`;
     const response = await fetch(`${url}/${this.props.values.id}`);
     const data = await response.json();
     this.setState({ result: data, loading: false});
