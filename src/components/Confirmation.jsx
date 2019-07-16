@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import {Container, Header, Button, List, Icon } from 'semantic-ui-react';
 import axios from 'axios';
-const LOCAL_API_ENDPOINT = 'http://localhost:3001/api/v1';
+// const LOCAL_API_ENDPOINT = 'http://localhost:3001/api/v1';
 const PROD_API_ENDPOING = 'https://risk-assessment-tool-api.herokuapp.com/api/v1';
 
 class Confirmation extends Component{
-  
 
   saveAndContinue = (e) => {
     const url = `${PROD_API_ENDPOING}/users`;

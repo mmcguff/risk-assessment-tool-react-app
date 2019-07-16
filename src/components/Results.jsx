@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import little from '../assets/svg/chickenLittle.svg';
 import fire from '../assets/svg/005-fire.svg';
 import flood from '../assets/svg/007-flood.svg';
 import drought from '../assets/svg/010-drought.svg';
@@ -7,7 +6,7 @@ import hurricane from '../assets/svg/011-wind.svg';
 import tornado from '../assets/svg/003-tornado.svg';
 import earthquake from '../assets/svg/001-earthquake.svg';
 import snow from '../assets/svg/020-snow.svg';
-const LOCAL_API_ENDPOINT = 'http://localhost:3001/api/v1';
+// const LOCAL_API_ENDPOINT = 'http://localhost:3001/api/v1';
 const PROD_API_ENDPOING = 'https://risk-assessment-tool-api.herokuapp.com/api/v1';
 
 class Success extends Component {
@@ -34,12 +33,9 @@ class Success extends Component {
           <div>loading...</div>
         ): (
           <div>
-                    <h1 className="title has-text-centered">
-          <b>{firstName} {lastName}</b>
-          <img src={little} height="64" width="64" alt="heat-wave" /> Here is
-          your completed Risk Assessment based upon where you live in <b>{city}, {state}</b>:
-        </h1>
-
+            <h1 className="title has-text-centered"><b>{firstName} {lastName}</b></h1>
+           <h2 className="title has-text-centered">Here is your completed Risk Assessment based upon where you live in:</h2>
+          <h3 className="title has-text-centered"><b>{city}, {state}</b></h3>
         <section className="hero is-medium is-primary">
           <nav className="level is-warning">
             <div className="level-item has-text-centered">
