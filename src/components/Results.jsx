@@ -6,99 +6,151 @@ import hurricane from '../assets/svg/011-wind.svg';
 import tornado from '../assets/svg/003-tornado.svg';
 import earthquake from '../assets/svg/001-earthquake.svg';
 import snow from '../assets/svg/020-snow.svg';
+import { Container, Button, Icon } from 'semantic-ui-react';
 // const LOCAL_API_ENDPOINT = 'http://localhost:3001/api/v1';
-const PROD_API_ENDPOING = 'https://risk-assessment-tool-api.herokuapp.com/api/v1';
+const PROD_API_ENDPOING =
+  'https://risk-assessment-tool-api.herokuapp.com/api/v1';
 
 class Success extends Component {
-
   state = {
     loading: true,
     result: null
   };
 
-  async componentDidMount(){
+  async componentDidMount() {
     const url = `${PROD_API_ENDPOING}/users`;
     const response = await fetch(`${url}/${this.props.values.id}`);
     const data = await response.json();
-    this.setState({ result: data, loading: false});
+    this.setState({ result: data, loading: false });
   }
 
-  render() {  
+  render() {
     const {
-      values: { firstName, lastName, city, state, household}
-    } = this.props;  
+      values: { firstName, lastName, city, state, household }
+    } = this.props;
     return (
       <div>
         {this.state.loading || !this.state.result ? (
           <div>loading...</div>
-        ): (
+        ) : (
           <div>
-            <h1 className="title has-text-centered"><b>{firstName} {lastName}</b></h1>
-           <h2 className="title has-text-centered">Here is your completed Risk Assessment based upon where you live in:</h2>
-          <h3 className="title has-text-centered"><b>{city}, {state}</b></h3>
-          <h3 className="title has-text-centered"><b>Household Size: {household}</b></h3>
-        <section className="hero is-medium is-primary">
-          <nav className="level is-warning">
-            <div className="level-item has-text-centered">
-              <div>
-                <p className="heading">Fire</p>
-                <img src={fire} height="65" width="68" alt="heat-wave" />
-                <p className="title">{this.state.result.fire}%</p>
-                <progress className="progress is-danger" value={this.state.result.fire} max="100" />
-              </div>
-            </div>
-            <div className="level-item has-text-centered">
-              <div>
-                <p className="heading">Flood</p>
-                <img src={flood} height="65" width="68" alt="heat-wave" />
-                <p className="title">{this.state.result.flood}%</p>
-                <progress className="progress is-danger" value={this.state.result.flood} max="100" />
-              </div>
-            </div>
-            <div className="level-item has-text-centered">
-              <div>
-                <p className="heading">Drought</p>
-                <img src={drought} height="65" width="68" alt="heat-wave" />
-                <p className="title">{this.state.result.drought}%</p>
-                <progress className="progress is-danger" value={this.state.result.drought} max="100" />
-              </div>
-            </div> 
-            <div className="level-item has-text-centered">
-              <div>
-                <p className="heading">Hurricane</p>
-                <img src={hurricane} height="65" width="68" alt="heat-wave" />
-                <p className="title">{this.state.result.hurricane}%</p>
-                <progress className="progress is-danger" value={this.state.result.hurricane} max="100" />
-              </div>
-            </div>
-            <div className="level-item has-text-centered">
-              <div>
-                <p className="heading">Tornado</p>
-                <img src={tornado} height="65" width="68" alt="heat-wave" />
-                <p className="title">{this.state.result.tornado}%</p>
-                <progress className="progress is-danger" value={this.state.result.tornado} max="100" />
-              </div>
-            </div>
-            <div className="level-item has-text-centered">
-              <div>
-                <p className="heading">Earthquake</p>
-                <img src={earthquake} height="65" width="68" alt="heat-wave" />
-                <p className="title">{this.state.result.earthquake}%</p>
-                <progress className="progress is-danger" value={this.state.result.earthquake} max="100" />
-              </div>
-            </div>
-            <div className="level-item has-text-centered">
-              <div>
-                <p className="heading">Winter Storm</p>
-                <img src={snow} height="65" width="68" alt="heat-wave" />
-                <p className="title">{this.state.result.snow}%</p>
-                <progress className="progress is-danger" value={this.state.result.snow} max="100" />
-              </div>
-            </div>
-          </nav>
-        </section>
+            <h1 className='title has-text-centered'>
+              <b>
+                {firstName} {lastName}
+              </b>
+            </h1>
+            <h2 className='title has-text-centered'>
+              Here is your completed Risk Assessment based upon where you live
+              in:
+            </h2>
+            <h3 className='title has-text-centered'>
+              <b>
+                {city}, {state}
+              </b>
+            </h3>
+            <h3 className='title has-text-centered'>
+              <b>Household Size: {household}</b>
+            </h3>
+            <section className='hero is-medium is-primary'>
+              <nav className='level is-warning'>
+                <div className='level-item has-text-centered'>
+                  <div>
+                    <p className='heading'>Fire</p>
+                    <img src={fire} height='65' width='68' alt='heat-wave' />
+                    <p className='title'>{this.state.result.fire}%</p>
+                    <progress
+                      className='progress is-danger'
+                      value={this.state.result.fire}
+                      max='100'
+                    />
+                  </div>
+                </div>
+                <div className='level-item has-text-centered'>
+                  <div>
+                    <p className='heading'>Flood</p>
+                    <img src={flood} height='65' width='68' alt='heat-wave' />
+                    <p className='title'>{this.state.result.flood}%</p>
+                    <progress
+                      className='progress is-danger'
+                      value={this.state.result.flood}
+                      max='100'
+                    />
+                  </div>
+                </div>
+                <div className='level-item has-text-centered'>
+                  <div>
+                    <p className='heading'>Drought</p>
+                    <img src={drought} height='65' width='68' alt='heat-wave' />
+                    <p className='title'>{this.state.result.drought}%</p>
+                    <progress
+                      className='progress is-danger'
+                      value={this.state.result.drought}
+                      max='100'
+                    />
+                  </div>
+                </div>
+                <div className='level-item has-text-centered'>
+                  <div>
+                    <p className='heading'>Hurricane</p>
+                    <img
+                      src={hurricane}
+                      height='65'
+                      width='68'
+                      alt='heat-wave'
+                    />
+                    <p className='title'>{this.state.result.hurricane}%</p>
+                    <progress
+                      className='progress is-danger'
+                      value={this.state.result.hurricane}
+                      max='100'
+                    />
+                  </div>
+                </div>
+                <div className='level-item has-text-centered'>
+                  <div>
+                    <p className='heading'>Tornado</p>
+                    <img src={tornado} height='65' width='68' alt='heat-wave' />
+                    <p className='title'>{this.state.result.tornado}%</p>
+                    <progress
+                      className='progress is-danger'
+                      value={this.state.result.tornado}
+                      max='100'
+                    />
+                  </div>
+                </div>
+                <div className='level-item has-text-centered'>
+                  <div>
+                    <p className='heading'>Earthquake</p>
+                    <img
+                      src={earthquake}
+                      height='65'
+                      width='68'
+                      alt='heat-wave'
+                    />
+                    <p className='title'>{this.state.result.earthquake}%</p>
+                    <progress
+                      className='progress is-danger'
+                      value={this.state.result.earthquake}
+                      max='100'
+                    />
+                  </div>
+                </div>
+                <div className='level-item has-text-centered'>
+                  <div>
+                    <p className='heading'>Winter Storm</p>
+                    <img src={snow} height='65' width='68' alt='heat-wave' />
+                    <p className='title'>{this.state.result.snow}%</p>
+                    <progress
+                      className='progress is-danger'
+                      value={this.state.result.snow}
+                      max='100'
+                    />
+                  </div>
+                </div>
+              </nav>
+            </section>
 
-        {/* <section className="hero is-medium is-primary">
+            {/* <section className="hero is-medium is-primary">
           <div className="hero-body">
             <div className="container">
               <img src={flood} height="124" width="124" alt="heat-wave" />
@@ -121,24 +173,32 @@ class Success extends Component {
           </div>
         </section> */}
 
-        <footer className="footer">
-          <div className="content has-text-centered">
-            <p>
-              <strong>Icons</strong> made by
-              <a href="https://www.flaticon.com/authors/smashicons">
-                Smashicons
-              </a>
-              from <a title="Flaticon">www.flaticon.com</a> is licensed by
-              <a
-                href="http://creativecommons.org/licenses/by/3.0/"
-                title="Creative Commons BY 3.0"
-                target=""
-              >
-                CC 3.0 BY
-              </a>
-            </p>
-          </div>
-        </footer>
+            <footer className='footer'>
+              <Container textAlign='center'>
+                <Button animated onClick={this.saveAndContinue} primary>
+                  <Button.Content visible>Save my results</Button.Content>
+                  <Button.Content hidden>
+                    <Icon name='life ring' />
+                  </Button.Content>
+                </Button>
+              </Container>
+              <div className='content has-text-centered'>
+                <p>
+                  <strong>Icons</strong> made by
+                  <a href='https://www.flaticon.com/authors/smashicons'>
+                    Smashicons
+                  </a>
+                  from <a title='Flaticon'>www.flaticon.com</a> is licensed by
+                  <a
+                    href='http://creativecommons.org/licenses/by/3.0/'
+                    title='Creative Commons BY 3.0'
+                    target=''
+                  >
+                    CC 3.0 BY
+                  </a>
+                </p>
+              </div>
+            </footer>
           </div>
         )}
       </div>
