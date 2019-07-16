@@ -18,7 +18,8 @@ class Confirmation extends Component{
         streetAddress: this.props.values.streetAddress,
         city: this.props.values.city,
         state: this.props.values.state,
-        zip: this.props.values.zip
+        zip: this.props.values.zip,
+        household: this.props.values.household
       },
       {
         headers: {'Content-Type': 'application/json'}

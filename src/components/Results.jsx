@@ -25,7 +25,7 @@ class Success extends Component {
 
   render() {  
     const {
-      values: { firstName, lastName, city, state}
+      values: { firstName, lastName, city, state, household}
     } = this.props;  
     return (
       <div>
@@ -36,6 +36,7 @@ class Success extends Component {
             <h1 className="title has-text-centered"><b>{firstName} {lastName}</b></h1>
            <h2 className="title has-text-centered">Here is your completed Risk Assessment based upon where you live in:</h2>
           <h3 className="title has-text-centered"><b>{city}, {state}</b></h3>
+          <h3 className="title has-text-centered"><b>Household Size: {household}</b></h3>
         <section className="hero is-medium is-primary">
           <nav className="level is-warning">
             <div className="level-item has-text-centered">
