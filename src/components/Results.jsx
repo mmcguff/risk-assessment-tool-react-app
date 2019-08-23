@@ -30,7 +30,7 @@ class Success extends Component {
       ];
     
       const allRequests = urls.map(url => 
-        fetch(url).then(response => response.json())
+        fetch(url, { mode: 'no-cors' }).then(response => response.json())
       );
     
       return Promise.all(allRequests);
