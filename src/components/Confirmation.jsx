@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import {Container, Header, Button, List, Icon } from 'semantic-ui-react';
 import axios from 'axios';
-const LOCAL_API_ENDPOINT = 'http://localhost:3001/api/v1';
-const PROD_API_ENDPOING = 'https://risk-assessment-tool-api.herokuapp.com/api/v1';
+const LOCAL = 'http://localhost:3001/api/v1';
+const PROD = 'https://risk-assessment-tool-api.herokuapp.com/api/v1';
+const BASEURL = process.env.NODE_ENV === 'development' ? LOCAL : PROD;
 
 class Confirmation extends Component{
   
 
   saveAndContinue = (e) => {
-      const url = process.env.NODE_ENV === 'development'? `${LOCAL_API_ENDPOINT}/users` : `${PROD_API_ENDPOING}/users`;
+      const url = `${BASEURL}/users`;
       e.preventDefault();
-      console.log(this.props.values);
       axios.post(url, 
       {
         firstName: this.props.values.firstName,
@@ -24,7 +24,6 @@ class Confirmation extends Component{
       {
         headers: {'Content-Type': 'application/json'}
       }).then(async response =>{
-          console.log(response);
           const id = await response.data._id;
           await this.setState({id});
           await this.props.handleIdChange(id);
