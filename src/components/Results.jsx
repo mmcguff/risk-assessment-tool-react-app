@@ -7,22 +7,45 @@ import tornado from '../assets/svg/003-tornado.svg';
 import earthquake from '../assets/svg/001-earthquake.svg';
 import snow from '../assets/svg/020-snow.svg';
 import { Container, Button, Icon } from 'semantic-ui-react';
-// const LOCAL_API_ENDPOINT = 'http://localhost:3001/api/v1';
-const PROD_API_ENDPOING =
-  'https://risk-assessment-tool-api.herokuapp.com/api/v1';
+const LOCAL = 'http://localhost:3001/api/v1';
+const PROD = 'https://risk-assessment-tool-api.herokuapp.com/api/v1';
+const BASEURL = process.env.NODE_ENV === 'development' ? LOCAL : PROD;
 
 class Success extends Component {
   state = {
     loading: true,
-    result: null
+    result: null,
+    disastersData: null,
+    demographicsData: null,
+    zipData: null
   };
 
   async componentDidMount() {
-    const url = `${PROD_API_ENDPOING}/users`;
-    const response = await fetch(`${url}/${this.props.values.id}`);
-    const data = await response.json();
-    this.setState({ result: data, loading: false });
-  }
+    const fetchData = () => {
+      const urls = [
+        `${BASEURL}/users/${this.props.values.id}`,
+        `${BASEURL}/incidents/disasters/${this.props.values.state}/${this.props.values.zip}`,
+        `${BASEURL}/incidents/demographics/${this.props.values.zip}`,
+        `${BASEURL}/incidents/zip-data/${this.props.values.zip}`
+      ];
+    
+      const allRequests = urls.map(url => 
+        fetch(url).then(response => response.json())
+      );
+    
+      return Promise.all(allRequests);
+    };
+
+    fetchData().then(arrayOfResponses => 
+      this.setState({
+        result: arrayOfResponses[0],
+        disastersData : arrayOfResponses[1],
+        demographicsData: arrayOfResponses[2],
+        zipData: arrayOfResponses[3],
+        loading: false
+      }),
+    );
+}
 
   render() {
     const {
@@ -149,6 +172,10 @@ class Success extends Component {
                 </div>
               </nav>
             </section>
+
+          <p>{JSON.stringify(this.state.disastersData)}</p>
+          <p>{JSON.stringify(this.state.demographicsData)}</p>
+          <p>{JSON.stringify(this.state.zipData)}</p>
 
             {/* <section className="hero is-medium is-primary">
           <div className="hero-body">
