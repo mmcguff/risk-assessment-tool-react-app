@@ -172,9 +172,11 @@ class Success extends Component {
                 </div>
               </nav>
             </section>
+
           <p>{JSON.stringify(this.state.disastersData)}</p>
           <p>{JSON.stringify(this.state.demographicsData)}</p>
           <p>{JSON.stringify(this.state.zipData)}</p>
+
             {/* <section className="hero is-medium is-primary">
           <div className="hero-body">
             <div className="container">
